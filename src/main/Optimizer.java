@@ -119,6 +119,7 @@ public class Optimizer {
 					queue.add(curr.getChild(c));
 				}else if(curr.getChild(c) instanceof SelectionNode){
 					tp = binaryParse(((SelectionNode) curr.getChild(c)).exp);
+					
 					removeNode(curr, c);
 					collects.addAll(tp);
 					

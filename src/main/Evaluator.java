@@ -23,7 +23,7 @@ import nodes.SubSelectInterface;
 
 public class Evaluator {
     
-    Eval eval;
+    static Eval eval;
     Hashtable<String, String> alias;
     PrimitiveValue temp;				// not normal integers.. This is a new primitive value class
     IsNullExpression tp;
@@ -34,7 +34,7 @@ public class Evaluator {
     	
     	this.parser = parser;
     	this.alias = parser.alias;
-    	this.eval = new Eval(){public PrimitiveValue eval(Column c) throws SQLException {return null;}};  // empty for now. forget this line
+    	Evaluator.eval = new Eval(){public PrimitiveValue eval(Column c) throws SQLException {return null;}};  // empty for now. forget this line
     	subs = new Hashtable<String, OperatorNode>();
     }
     
@@ -95,7 +95,7 @@ public class Evaluator {
 				
 				if(i.getItemsList() instanceof ExpressionList){
 					for(Expression exp : ((ExpressionList) i.getItemsList()).getExpressions()) {
-						if(evaluate(new EqualsTo(temp, exp), tuple).toBool()) return BooleanValue.TRUE;
+						if(Evaluator.equals(temp, evaluate(exp, tuple)).toBool()) return BooleanValue.TRUE;
 					}
 				} else {
 					if(!subs.containsKey(i.toString())) {
@@ -194,7 +194,7 @@ public class Evaluator {
 		return eval.eval(exp);
 	}
 	
-	public PrimitiveValue equals(PrimitiveValue a, PrimitiveValue b) throws SQLException{ // to check if two primitive values are equal (pass the two primitive values)
+	public static PrimitiveValue equals(PrimitiveValue a, PrimitiveValue b) throws SQLException{ // to check if two primitive values are equal (pass the two primitive values)
 		
 		if((a instanceof StringValue || a instanceof StringValue)) {
 			if(a.toString().equals(b.toString())) {
