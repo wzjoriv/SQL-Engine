@@ -69,6 +69,20 @@ public class Evaluator {
 					case "SUBSTRING":
 						
 						break;
+					case "DATE_PART":
+						try {
+							DateValue temp = (DateValue) evaluate(f.getParameters().getExpressions().get(1), tuple);
+							
+							switch(((StringValue) f.getParameters().getExpressions().get(0)).toRawString().toUpperCase()) {
+								case "YEAR":
+									return new LongValue(temp.getYear());
+								case "MONTH":
+									return new LongValue(temp.getMonth());
+								case "DATE":
+									return new LongValue(temp.getDate());
+							}
+						} catch (SQLException e) {}
+						break;
 				}
 								
 				return null;

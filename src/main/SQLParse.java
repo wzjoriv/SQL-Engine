@@ -274,7 +274,7 @@ public class SQLParse {
                 if (in.getAlias() != null) columns.add(in.getAlias());	// if it has an alias, save the alias into "columns" arraylist. 
                 else columns.add(in.toString());						//if no alias, take the expression (A+B) as is, turn it into a string, name the column as string of "A+B"
 
-                if (in.getExpression() instanceof Function) aggs.add(in);	// after puttin in names, we check for Functions
+                if (in.getExpression() instanceof Function && !((Function) in.getExpression()).getName().toUpperCase().equals("DATE_PART")) aggs.add(in);	// after puttin in names, we check for Functions
                 else exprs.add(in);				//SUM(B) is an example of a Function.
             }			// if it is a Function, add it to aggregators (aggs). if not a Function, add ad Expression (exprs)
         }
