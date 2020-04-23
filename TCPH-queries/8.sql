@@ -80,7 +80,7 @@ CREATE TABLE REGION (
 
 
 
-SELECT n2.name,
+SELECT DISTINCT n2.name,
 	   DATE_PART('year', o.orderdate) AS o_year,
 	   l.extendedprice * (1-l.discount) AS volume
 FROM   PART p, SUPPLIER s, LINEITEM l, ORDERS o, CUSTOMER c, NATION n1,
