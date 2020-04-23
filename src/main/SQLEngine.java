@@ -36,11 +36,11 @@ public class SQLEngine {
 	        	tree = parser.CreateTree(queries[i]);
 	        	if(tree!=null) {
 	        		opt = new Optimizer(tree);
-	        		//tree.printTree();
-	        		//System.out.println("----------------------------------------------------------");
+	        		tree.printTree();
+	        		System.out.println("----------------------------------------------------------");
 	        		opt.optimize();
-	        		//tree.printTree();
-	        		//System.out.println("----------------------------------------------------------");
+	        		tree.printTree();
+	        		System.out.println("----------------------------------------------------------");
 	        		tree.computeTree();
 	        		//System.gc(); //about 2 extra seconds
 	        	}
