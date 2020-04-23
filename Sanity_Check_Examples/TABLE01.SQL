@@ -1,0 +1,4 @@
+CREATE TABLE R (A int, B int);
+CREATE TABLE T (C int, D int);
+
+SELECT * FROM R, ORDER BY A DESC;
