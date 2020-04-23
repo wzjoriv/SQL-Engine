@@ -70,9 +70,13 @@ public class AggregatorNode extends OperatorNode{
 				}
 				
 				try {
+					//Primitive
 					if(agg.getAlias() != null) temp.add(agg.getAlias(), eval.evaluate(fu, temp, prev.get(agg.getAlias())));
 					else temp.add(agg.toString(), eval.evaluate(fu, temp, prev.get(agg.toString())));
-				} catch (SQLException e) {}
+				} catch (SQLException e) {
+					//System.out.println(eval.evaluate(fu, temp, prev.get(agg.getAlias())));
+					e.printStackTrace();
+				}
 			}
 
 			
