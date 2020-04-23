@@ -95,7 +95,7 @@ public class Evaluator {
 				
 				if(i.getItemsList() instanceof ExpressionList){
 					for(Expression exp : ((ExpressionList) i.getItemsList()).getExpressions()) {
-						if(Evaluator.equals(temp, evaluate(exp, tuple)).toBool()) return BooleanValue.TRUE;
+						if(Evaluator.equals(temp, (PrimitiveValue) exp).toBool()) return BooleanValue.TRUE;
 					}
 				} else {
 					if(!subs.containsKey(i.toString())) {
@@ -197,7 +197,8 @@ public class Evaluator {
 	public static PrimitiveValue equals(PrimitiveValue a, PrimitiveValue b) throws SQLException{ // to check if two primitive values are equal (pass the two primitive values)
 		
 		if((a instanceof StringValue || a instanceof StringValue)) {
-			if(a.toString().equals(b.toString())) {
+			if(a.toRawString().toUpperCase().equals(b.toRawString().toUpperCase())) {
+				//System.out.println("Cool " + a);
 				return BooleanValue.TRUE;
 			}else {
 				return BooleanValue.FALSE;
