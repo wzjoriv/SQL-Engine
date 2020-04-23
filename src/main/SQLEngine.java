@@ -39,7 +39,7 @@ public class SQLEngine {
 	        		//tree.printTree();
 	        		//System.out.println("----------------------------------------------------------");
 	        		opt.optimize();
-	        		System.gc();
+	        		//System.gc();
 	        		//tree.printTree();
 	        		//System.out.println("----------------------------------------------------------");
 	        		tree.computeTree();

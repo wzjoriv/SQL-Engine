@@ -49,6 +49,7 @@ public class GroupByNode extends OperatorNode {
 			temp = getGroup(curr);
 			if(!mem2.containsKey(temp)) mem2.put(temp, new ArrayList<Tuple>());
 			mem2.get(temp).add(curr);
+			System.gc();
 			
 			return null;
 		}else {
