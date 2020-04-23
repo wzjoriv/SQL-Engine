@@ -45,7 +45,7 @@ public class SQLEngine {
 	        		//System.gc(); //about 2 extra seconds
 	        	}
 	        } catch (Exception e) {
-	        	e.printStackTrace();
+	        	//e.printStackTrace();
 	        } catch (Error e) {} //based on what Kul suggested
 	        
 	        System.out.println("=");

@@ -91,9 +91,7 @@ public class JoinNode extends OperatorNode {
 				else correctExp = uq.getLeftExpression();
 				
 				//System.out.println("Exit (" + uq + "): " + correctExp);
-			}catch(Exception e) {
-				e.printStackTrace();
-			}
+			}catch(Exception e) {}
 			
 			memLoaded = true;			// only runs one time
 		}
